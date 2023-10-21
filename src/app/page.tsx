@@ -1,25 +1,24 @@
 'use client'
 import { Banner } from '@/components/Banner'
 import { Flex, Heading, Link, List, ListIcon, ListItem, SimpleGrid, Text } from '@chakra-ui/react'
-import type { AppProps } from 'next/app'
-import home2 from '../../assets/home-2.webp';
-import wave from '../../assets/wave.svg';
-import atrite from '../../assets/artrite.webp';
-import gota from '../../assets/gota.webp';
-import dorCosta from '../../assets/dor-costa.webp';
-import inchacho from '../../assets/inchaco.webp';
-import bursite from '../../assets/bursite.webp';
-import tendinite from '../../assets/tendinite.webp';
-import medicos from '../../assets/medicos.webp';
-import umFrasco from '../../assets/1frasco.webp';
-import doisFrasco from '../../assets/2frasco.webp';
-import tresFrasco from '../../assets/3frasco.webp';
-import dozeFrasco from '../../assets/12frasco.webp';
+import home2 from '../assets/home-2.webp';
+import wave from '../assets/wave.svg';
+import atrite from '../assets/artrite.webp';
+import gota from '../assets/gota.webp';
+import dorCosta from '../assets/dor-costa.webp';
+import inchacho from '../assets/inchaco.webp';
+import bursite from '../assets/bursite.webp';
+import tendinite from '../assets/tendinite.webp';
+import medicos from '../assets/medicos.webp';
+import umFrasco from '../assets/1frasco.webp';
+import doisFrasco from '../assets/2frasco.webp';
+import tresFrasco from '../assets/3frasco.webp';
+import dozeFrasco from '../assets/12frasco.webp';
 import Image from 'next/image';
 import { FaCheckDouble } from 'react-icons/fa'
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
-export default function Home({ Component, pageProps }: AppProps) {
+export default function Home() {
   return (
     <Flex
       w="100%"
