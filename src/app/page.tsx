@@ -1,8 +1,7 @@
 'use client'
 import { Banner } from '@/components/Banner'
-import { Flex, Heading, Link, List, ListIcon, ListItem, SimpleGrid, Text } from '@chakra-ui/react'
+import { Flex, Heading, Link, List, ListIcon, ListItem, SimpleGrid, Text, useMediaQuery } from '@chakra-ui/react'
 import home2 from '../assets/home-2.webp';
-import wave from '../assets/wave.svg';
 import atrite from '../assets/artrite.webp';
 import gota from '../assets/gota.webp';
 import dorCosta from '../assets/dor-costa.webp';
@@ -14,11 +13,13 @@ import umFrasco from '../assets/1frasco.webp';
 import doisFrasco from '../assets/2frasco.webp';
 import tresFrasco from '../assets/3frasco.webp';
 import dozeFrasco from '../assets/12frasco.webp';
+import pagamento from '../assets/pagamento-new.png.webp';
 import Image from 'next/image';
 import { FaCheckDouble } from 'react-icons/fa'
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 export default function Home() {
+  const [isLargeThan1280px] = useMediaQuery('(min-width: 1280px)');
   return (
     <Flex
       w="100%"
@@ -29,20 +30,21 @@ export default function Home() {
         <Flex
           w="100%"
           flexDirection="column"
-          px="10rem"
+          px={isLargeThan1280px ? "10rem" : "1.2rem"}
           justify="center"
         >
           <Flex
             w="100%"
             align="center"
+            flexDir={isLargeThan1280px ? "row" : "column"}
           >
             <Flex
-              w="50%"
+              w={isLargeThan1280px ? "50%" : "100%"}
               flexDirection="column"
               gap="0.5rem"
             >
               <Heading
-                fontSize="2.5rem"
+                fontSize={["1.5rem", "2rem", "2.5rem"]}
                 color="#114B00"
               >
                 Ora-Pro-Nóbis é a descoberta do ano na luta contra inflamações articulares
@@ -112,7 +114,7 @@ export default function Home() {
           position="relative"
           align="center"
           flexDirection="column"
-          px="80px"
+          px={isLargeThan1280px ? "10rem" : "1.2rem"}
           py="20px"
           gap="20px"
         >
@@ -185,22 +187,23 @@ export default function Home() {
           <Flex
             w="100%"
             gap="24px"
-            px="80px"
+            px={isLargeThan1280px ? "10rem" : "1.2rem"}
             align="center"
             justify="center"
+            flexDir={isLargeThan1280px ? "row" : "column"}
           >
             <Image 
               src={medicos}
               alt="Medicos"
               style={{
-                width: '550px',
+                width: isLargeThan1280px ? '550px' : '340px',
                 height: '340px'
               }}
             />
             <Flex
               flexDir="column"
               gap="24px"
-              width="530px"
+              width={isLargeThan1280px ? "530px" : "100%"}
               py="20px"
             >
               <Text
@@ -239,7 +242,7 @@ export default function Home() {
         <Flex
           w="100%"
           backgroundColor="#249004"
-          p="80px"
+          px={isLargeThan1280px ? "10rem" : "1.2rem"}
           flexDirection="column"
           align="center"
         >
@@ -251,14 +254,16 @@ export default function Home() {
           <Text
             fontSize="18px"
             color="#FFF"
+            marginTop="20px"
           >
             Aproveite esta oferta especial e adquira o VITA-PRO-NÓBIS hoje mesmo!
           </Text>
 
           <SimpleGrid
             w="100%"
-            minChildWidth="550px"
+            minChildWidth={isLargeThan1280px ? "550px" : "350px"}
             gap="24px"
+            marginTop="20px"
           >
             <Link
               href="https://ev.braip.com/ref?pl=plako20z&ck=cheq76nd&af=afinejxjp3"
@@ -268,7 +273,7 @@ export default function Home() {
                 src={umFrasco}
                 alt="1 Frascos"
                 style={{
-                  maxWidth: '550px',
+                  maxWidth: isLargeThan1280px ? '550px' : '350px',
                   width: '100%',
                   borderRadius: '20px'
                 }}
@@ -282,7 +287,7 @@ export default function Home() {
                 src={doisFrasco}
                 alt="2 Frascos"
                 style={{
-                  maxWidth: '550px',
+                  maxWidth: isLargeThan1280px ? '550px' : '350px',
                   width: '100%',
                   borderRadius: '20px'
                 }}
@@ -296,7 +301,7 @@ export default function Home() {
                 src={tresFrasco}
                 alt="3 Frascos"
                 style={{
-                  maxWidth: '550px',
+                  maxWidth: isLargeThan1280px ? '550px' : '350px',
                   width: '100%',
                   borderRadius: '20px'
                 }}
@@ -310,13 +315,65 @@ export default function Home() {
                 src={dozeFrasco}
                 alt="12 Frascos"
                 style={{
-                  maxWidth: '550px',
+                  maxWidth: isLargeThan1280px ? '550px' : '350px',
                   width: '100%',
                   borderRadius: '20px'
                 }}
               />
             </Link>
           </SimpleGrid>
+        </Flex>
+
+        <Flex
+          w="100%"
+          backgroundColor="#FFF"
+          px={isLargeThan1280px ? "10rem" : "1.2rem"}
+          py="1rem"
+          flexDirection={isLargeThan1280px ? "row" : "column"}
+          gap="3rem"
+          align="center"
+          justify="center"
+        >
+          <Flex
+            direction="column"
+            gap="1rem"
+          >
+            <Heading fontSize={[".8rem","1rem","1.5rem"]}>Rastreio</Heading>
+            <Button
+              onClick={() => window.open("https://www.linkcorreios.com.br/")}
+            >
+              RASTREIE AQUI
+            </Button>
+          </Flex>
+          <Flex
+            direction="column"
+            gap="1rem"
+          >
+            <Heading fontSize={[".8rem","1rem","1.5rem"]}>Links Importantes</Heading>
+            <Link
+              href='https://vitapronobis.site/politicas-de-privacidade/'
+              target='_blank'
+            >
+              Política de Privacidade
+            </Link>
+            <Link
+              href='https://vitapronobis.site/termo-de-uso'
+              target='_blank'
+            >
+              Termos de Uso
+            </Link>
+          </Flex>
+          <Flex
+            direction="column"
+            gap="1rem"
+          >
+            <Heading fontSize={[".8rem","1rem","1.5rem"]}>Formas de pagamento</Heading>
+            <Image 
+              src={pagamento}
+              alt="Formas de pagamento"
+              width={250} 
+            />
+          </Flex>
         </Flex>
 
     </Flex>
