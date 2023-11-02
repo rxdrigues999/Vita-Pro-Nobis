@@ -1,6 +1,6 @@
 'use client'
 import { Banner } from '@/components/Banner'
-import { Flex, Heading, Link, List, ListIcon, ListItem, SimpleGrid, Text, useMediaQuery } from '@chakra-ui/react'
+import { Flex, Heading, Icon, Link, List, ListIcon, ListItem, SimpleGrid, Text, useMediaQuery } from '@chakra-ui/react'
 import home2 from '../assets/home-2.webp';
 import atrite from '../assets/artrite.webp';
 import gota from '../assets/gota.webp';
@@ -14,12 +14,22 @@ import doisFrasco from '../assets/2frasco.webp';
 import tresFrasco from '../assets/3frasco.webp';
 import dozeFrasco from '../assets/12frasco.webp';
 import pagamento from '../assets/pagamento-new.png.webp';
+import garantia from '../assets/garantia.webp';
+import anvisa from '../assets/anvisa.webp';
 import Image from 'next/image';
-import { FaCheckDouble } from 'react-icons/fa'
+import { FaCheckCircle, FaCheckDouble } from 'react-icons/fa'
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from '@chakra-ui/react'
+import { useRef } from 'react';
 export default function Home() {
   const [isLargeThan1280px] = useMediaQuery('(min-width: 1280px)');
+  const buyRef = useRef(null);
   return (
     <Flex
       w="100%"
@@ -87,7 +97,8 @@ export default function Home() {
               </List>
               <Button
                 maxW="300px"
-                onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+                //@ts-ignore
+                onClick={() => buyRef?.current?.scrollIntoView({ behavior: 'smooth' })}
               >
                 QUERO EXPERIMENTAR
               </Button>
@@ -168,7 +179,8 @@ export default function Home() {
             <Button
               variant='secondary'
               maxW="250px"
-              onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+              //@ts-ignore
+              onClick={() => buyRef?.current?.scrollIntoView({ behavior: 'smooth' })}
             >
               QUERO ALÍVIO JÁ!
             </Button>
@@ -233,18 +245,66 @@ export default function Home() {
             Se você não quer depender de cirurgia, o Vita-Pro-Nóbis é para você
           </Heading>
           <Button
-            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+            //@ts-ignore
+            onClick={() => buyRef?.current?.scrollIntoView({ behavior: 'smooth' })}
           >
             QUERO MELHORAR MINHA SAÚDE!
           </Button>
         </Flex>
-
+        <Flex 
+          p="80px"
+          flexDir={isLargeThan1280px ? "row" : "column"}
+          gap={30}
+          align="center"
+        >
+          <Flex
+            maxW={800}
+            w="100%"
+            flexDir="column"
+          >
+            <Heading as="h2" size="lg" mb={4}>
+              O <strong>VITA-PRO-NÓBIS</strong> segue os padrões mais rigorosos da indústria, e tendo autorização da ANVISA para ser comercializado por todo o país.
+            </Heading>
+            <List spacing={2} mb={4}>
+              <ListItem>
+                <Icon as={FaCheckCircle} color="green.500" mr={2} />
+                Acabe com a dor na cartilagem
+              </ListItem>
+              <ListItem>
+                <Icon as={FaCheckCircle} color="green.500" mr={2} />
+                Não permita que seus ombros, braços, coluna ou quadril fiquem travados
+              </ListItem>
+              <ListItem>
+                <Icon as={FaCheckCircle} color="green.500" mr={2} />
+                Não deixe de trabalhar por conta da dor intensa
+              </ListItem>
+              <ListItem>
+                <Icon as={FaCheckCircle} color="green.500" mr={2} />
+                Abandone remédios que podem causar dependência ou efeitos colaterais irreversíveis
+              </ListItem>
+            </List>
+            <Button
+              maxWidth={380}
+              //@ts-ignore
+              onClick={() => buyRef?.current?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              QUERO ESTAR 100% SEGURO!
+            </Button>
+          </Flex>
+          <Image 
+              width={isLargeThan1280px ? 500 : 350}
+              src={anvisa}
+              alt="Anvisa aprova!"
+            />
+        </Flex>
         <Flex
           w="100%"
           backgroundColor="#249004"
           px={isLargeThan1280px ? "10rem" : "1.2rem"}
           flexDirection="column"
           align="center"
+          py={"1.2rem"}
+          ref={buyRef}
         >
           <Heading
             color="#FFF"
@@ -323,7 +383,151 @@ export default function Home() {
             </Link>
           </SimpleGrid>
         </Flex>
+        <Flex
+          w="100%"
+          backgroundColor="#E4FFE3"
+          px={isLargeThan1280px ? "10rem" : "1.2rem"}
+          py="1rem"
+          flexDirection={isLargeThan1280px ? "row" : "column"}
+          gap={isLargeThan1280px ? "10rem" : "3rem"}
+          align="center"
+          justify="center"
+        >
+          <Flex
+            maxW={405}
+            flexDir="column"
+          >
+            <Heading>Resultdos garantidos  ou seu dinheiro de volta!</Heading>
+            <Text>Estamos tão confiantes na eficácia do <b>VITA-PRO-NÓBIS</b> que oferecemos uma garantia de 90 dias.</Text>
+            <Text>Se você não ficar satisfeito com os resultados, nós reembolsaremos o valor integral da sua compra.</Text>
+            <Button
+              //@ts-ignore
+              onClick={() => buyRef?.current?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              QUERO VITA-PRO-NÓBIS
+            </Button>
+          </Flex>
+          <Image 
+            width={405}
+            src={garantia}
+            alt="garantia"
+          />
+        </Flex>
+        <Flex
+          w="100%"
+          backgroundColor="#249004"
+          align="center"
+          flexDirection="column"
+          px={isLargeThan1280px ? "10rem" : "1.2rem"}
+          py="20px"
+          gap="20px"
+        >
+          <Heading color="white">DÚVIDAS?</Heading>
+          <Flex
+            w="100%"
+            gap="10px"
+            flexDirection={isLargeThan1280px ? "row" : "column"}
+          >
+            <Accordion 
+              allowToggle 
+              w="100%" 
+              backgroundColor="white"
+              borderRadius=".4rem"
+            >
+              <AccordionItem
+                borderRadius=".4rem"
+              >
+                <AccordionButton
+                  color="#249004"
+                  fontWeight={600}
+                >
+                  O que é VITA-PRO-NÓBIS ?
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  VITA-PRO-NÓBIS é um suplemento alimentar formulado para aliviar dores articulares e melhorar a saúde das articulações
+                </AccordionPanel>
+              </AccordionItem>
 
+              <AccordionItem
+                borderRadius=".4rem"
+              >
+                <AccordionButton
+                  color="#249004"
+                  fontWeight={600}
+                >
+                  Como VITA-PRO-NÓBIS funciona?
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  Resposta: VITA-PRO-NÓBIS age reduzindo a inflamação, fortalecendo os ossos e proporcionando alívio das dores articulares.
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem
+                borderRadius=".4rem"
+              >
+                <AccordionButton
+                  color="#249004"
+                  fontWeight={600}
+                >
+                  Existem efeitos colaterais?
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  VITA-PRO-NÓBIS é seguro, pois sua fórmula é baseada em ingredientes naturais. Consulte um profissional de saúde antes de iniciar qualquer suplemento.
+                </AccordionPanel>
+              </AccordionItem>
+              
+            </Accordion>
+
+            <Accordion 
+              allowToggle 
+              w="100%" 
+              backgroundColor="white"
+              borderRadius=".4rem"
+            >
+              <AccordionItem
+                borderRadius=".4rem"
+              >
+                <AccordionButton
+                  color="#249004"
+                  fontWeight={600}
+                >
+                  Quanto tempo leva para ver resultados?
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  Muitos clientes relatam alívio em questão de poucos dias, mas os resultados podem variar.
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem
+                borderRadius=".4rem"
+              >
+                <AccordionButton
+                  color="#249004"
+                  fontWeight={600}
+                >
+                  Qual é a dose recomendada?
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  Recomendamos tomar 15 gotas de VITA-PRO-NÓBIS por dia, de preferência com as refeições.
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem
+                borderRadius=".4rem"  
+              >
+                <AccordionButton
+                  color="#249004"
+                  fontWeight={600}
+                >
+                  Posso tomar VITA-PRO-NÓBIS com outros suplementos?
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  Consulte um profissional de saúde para garantir que a combinação de suplementos seja segura e eficaz para você.
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </Flex>
+        </Flex>
         <Flex
           w="100%"
           backgroundColor="#FFF"
